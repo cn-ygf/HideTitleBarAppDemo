@@ -1,21 +1,31 @@
-//
-//  ContentView.swift
-//  HideTitleBarAppDemo
-//
-//  Created by dev on 2026/3/31.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            if #available(macOS 12.0, *) {
+                Color.clear
+                    .background(.ultraThinMaterial)
+                    .ignoresSafeArea()
+            } else {
+                Color(NSColor.windowBackgroundColor)
+                    .ignoresSafeArea()
+            }
+            HStack(spacing: 0) {
+                VStack {
+                    Text("LEFT")
+                }
+                .frame(width: 200)
+                .frame(maxHeight: .infinity)
+                .background(Color.blue.opacity(0.78))
+                .ignoresSafeArea()
+                
+                VStack {
+                    Text("Right")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
-        .padding()
     }
 }
 
