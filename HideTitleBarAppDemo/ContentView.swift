@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var app = AppManager()
     var body: some View {
         ZStack {
             if #available(macOS 12.0, *) {
@@ -13,7 +14,7 @@ struct ContentView: View {
             }
             HStack(spacing: 0) {
                 VStack {
-                    Text("LEFT")
+                    Text(app.myTitle)
                 }
                 .frame(width: 200)
                 .frame(maxHeight: .infinity)
@@ -26,6 +27,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .environmentObject(app) // 注入 ObservableObject对象
     }
 }
 

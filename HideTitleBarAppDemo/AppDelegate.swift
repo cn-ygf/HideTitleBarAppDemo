@@ -12,7 +12,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             rootView: ContentView()
         )
 
-        // .fullSizeContentView是无边框窗口的关键
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 900, height: 700),
             styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
